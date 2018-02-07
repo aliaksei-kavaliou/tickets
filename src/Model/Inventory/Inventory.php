@@ -35,9 +35,9 @@ class Inventory implements InventoryInterface, \JsonSerializable
     /**
      * Set genre
      * @param string $type
-     * @return \App\Model\Inventory\Record
+     * @return Inventory
      */
-    public function setGenre($type): Record
+    public function setGenre($type): Inventory
     {
         $this->genre = $type;
 
