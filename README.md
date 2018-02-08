@@ -25,7 +25,7 @@ Install dependences:
 ```
 $ composer install
 $ yarn install
-$ yarn encore --dev
+$ yarn encore dev
 ```
 
 ## Running the tests
