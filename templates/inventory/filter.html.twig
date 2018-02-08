@@ -1,0 +1,20 @@
+<div class="col-sm-6">
+    {{ form_start(form, {"attr": {"class": "form-inline"} }) }}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('filter') }}">
+        
+        {{ form_label(form.requiredDate) }}
+
+        <div id="dateContainer" class="input-group date" 
+             data-date-container='#dateContainer' data-date-autoclose="true"
+             data-provide="datepicker" data-date-format="yyyy-mm-dd">
+            {{ form_widget(form.requiredDate, {"attr": {"class": "form-control"} }) }}
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+    {{ form_end(form) }}
+</div>
