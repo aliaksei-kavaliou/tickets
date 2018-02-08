@@ -26,7 +26,7 @@ class InventoryControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertNotEmpty($crawler->filterXPath('//input[@id="filter_requiredDate"]'));
-        $this->assertCount(3, $crawler->filterXPath('//table/tbody/tr[contains(@class, "genre")]'));
+        $this->assertCount(3, $crawler->filterXPath('//h1[contains(@class, "genre")]'));
         $this->assertCount(0, $crawler->filterXPath('//table/tbody/tr[contains(@class, "items")]'));
 
         $client1 = self::createClient();
