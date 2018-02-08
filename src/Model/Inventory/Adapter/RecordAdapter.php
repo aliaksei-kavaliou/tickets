@@ -78,7 +78,7 @@ class RecordAdapter implements RecordAdapterInterface
             return $daysForSale * $this->getDailyLimit($item, $requiredDate);
         }
 
-        if (self::STATUS_SALE_NOT_STARTED) {
+        if (self::STATUS_SALE_NOT_STARTED == $status) {
             return $this->getHallCapacity($item, $requiredDate);
         }
 
@@ -157,7 +157,7 @@ class RecordAdapter implements RecordAdapterInterface
      */
     private function getStatus(\DateTime $requiredDate, \DateTime $queryDate): string
     {
-        $daysBeforeRequired = $requiredDate->diff($queryDate)->days;
+        $daysBeforeRequired = (int)$queryDate->diff($requiredDate)->format("%R%a");
 
         if ($daysBeforeRequired < 0) {
             return self::STATUS_IN_THE_PAST;

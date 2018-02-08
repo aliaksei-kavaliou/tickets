@@ -51,7 +51,7 @@ class InventoryCommand extends Command
                 self::INPUT_ARGUMENT_REQUEST_DATE,
                 InputArgument::OPTIONAL,
                 'Request date. Default is current date',
-                'now'
+                'today'
             );
     }
 

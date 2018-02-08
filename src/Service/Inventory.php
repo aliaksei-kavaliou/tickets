@@ -92,7 +92,7 @@ class Inventory
     public function makeInventory(\DateTime $requiredDate, \DateTime $queryDate = null): array
     {
         if (!$queryDate) {
-            $queryDate = new \DateTime();
+            $queryDate = new \DateTime('today');
         }
 
         $data = [];

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use App\Service\Inventory;
 use App\Model\Form\FilterType as Filter;
 use App\Form\FilterType;
@@ -18,7 +19,7 @@ class InventoryController extends Controller
     /**
      * @Route("/", name="inventory_page")
      */
-    public function index(Request $request, Inventory $inventoryService)
+    public function index(Request $request, Inventory $inventoryService): Response
     {
         $filter = new Filter(new \DateTime());
         $form = $this->createForm(FilterType::class, $filter);

@@ -29,6 +29,7 @@ class InventoryCommandTest extends KernelTestCase
         /* @var $command InventoryCommand  */
         $command = $this->application->find('app:get-inventory');
         $commandTester = new CommandTester($command);
+
         $commandTester->execute([
             'command' => $command->getName(),
             'input-file' => self::$inputFile,
@@ -40,6 +41,7 @@ class InventoryCommandTest extends KernelTestCase
         $this->assertContains('"inventory":', $output);
         $this->assertContains('sale not started', $output);
         $this->assertNotContains('open for sale', $output);
+        $this->assertNotContains('in the past', $output);
         $this->assertContains('"title": "Cats"', $output);
         $this->assertNotContains('"title": "Everyman"', $output);
 
@@ -52,8 +54,22 @@ class InventoryCommandTest extends KernelTestCase
 
         $output1 = $commandTester->getDisplay();
         $this->assertNotContains('sale not started', $output1);
+        $this->assertNotContains('in the past', $output1);
         $this->assertContains('open for sale', $output1);
         $this->assertContains('"title": "Everyman"', $output1);
+
+        $commandTester->execute([
+            'command' => $command->getName(),
+            'input-file' => self::$inputFile,
+            'required-date' => '2017-08-15',
+            'query-date' => '2018-08-01',
+        ]);
+
+        $output2 = $commandTester->getDisplay();
+        $this->assertNotContains('sale not started', $output2);
+        $this->assertNotContains('open for sale', $output2);
+        $this->assertContains('in the past', $output2);
+        $this->assertContains('"title": "Everyman"', $output2);
     }
 
     /**
