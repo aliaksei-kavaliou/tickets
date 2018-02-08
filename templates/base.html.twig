@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-config" content="none">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>{% block title %}{%trans%}App_title{% endtrans %}{% endblock %}</title>
+        
+        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}" />
+        <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        
+        <script src="{{ asset('build/manifest.js') }}"></script>
+        <script src="{{ asset('build/vendor.js') }}"></script>
+        
+    </head>
+    <body>
+        <div class="container" style="margin-top:50px">
+            {% block body %}{% endblock %}
+        </div>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
