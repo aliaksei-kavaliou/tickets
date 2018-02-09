@@ -14,7 +14,7 @@
         
         {{ form_label(form.requiredDate) }}
 
-        <div id="dateContainer" class="input-group date" 
+        <div id="dateContainer" class="input-group date" data-date-today-highlight="true"
              data-date-container='#dateContainer' data-date-autoclose="true"
              data-provide="datepicker" data-date-format="yyyy-mm-dd">
             {{ form_widget(form.requiredDate, {"attr": {"class": "form-control"} }) }}
